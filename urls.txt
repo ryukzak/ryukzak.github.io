@@ -69,3 +69,4 @@
 /projects/nitta/
 /projects/tailbook/
 /projects/wrench/
+/ru/projects/wrench/
