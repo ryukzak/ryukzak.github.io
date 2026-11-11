@@ -51,6 +51,7 @@ type Page struct {
 	key        string
 	collection string
 	translated bool
+	archived   bool
 	source     []byte
 }
 
@@ -130,7 +131,8 @@ func load(path, collection string) (*Page, error) {
 	p := &Page{
 		Layout: meta["layout"], Title: meta["title"], Description: meta["description"],
 		Lang: lang[1:], collection: collection, translated: translated,
-		Autotranslated: auto == "true", source: src[len(m[0]):],
+		Autotranslated: auto == "true", archived: meta["archived"] == "true",
+		source: src[len(m[0]):],
 	}
 
 	switch collection {
@@ -188,11 +190,12 @@ func render(src []byte) (template.HTML, error) {
 }
 
 // listing renders one home page section in the given language, falling back
-// to the original when a page has no translation.
-func listing(pages []*Page, collection, lang string, small func(*Page) string) string {
+// to the original when a page has no translation. archived selects pages by
+// the `archived: true` flag of the original.
+func listing(pages []*Page, collection, lang string, archived bool, small func(*Page) string) string {
 	var items []*Page
 	for _, p := range pages {
-		if p.collection != collection || p.translated {
+		if p.collection != collection || p.translated || p.archived != archived {
 			continue
 		}
 		item := p
@@ -281,9 +284,10 @@ func renderPages(liveReload bool) error {
 		src := p.source
 		if p.collection == "home" {
 			src = []byte(strings.NewReplacer(
-				"{{projects}}", listing(pages, "projects", p.Lang, description),
-				"{{courses}}", listing(pages, "courses", p.Lang, description),
-				"{{posts}}", listing(pages, "posts", p.Lang, date),
+				"{{projects}}", listing(pages, "projects", p.Lang, false, description),
+				"{{archived-projects}}", listing(pages, "projects", p.Lang, true, description),
+				"{{courses}}", listing(pages, "courses", p.Lang, false, description),
+				"{{posts}}", listing(pages, "posts", p.Lang, false, date),
 			).Replace(string(src)))
 		}
 		if p.Content, err = render(src); err != nil {

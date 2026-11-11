@@ -1,4 +1,5 @@
 ---
+archived: true
 layout: page
 title: Course Bot
 description: Telegram Bot for Course Automation on Clojure

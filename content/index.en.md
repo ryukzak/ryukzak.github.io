@@ -38,7 +38,13 @@ Please feel free to explore my projects to get a better idea of my expertise and
 
 These projects can provide topics for your bachelor's or master's thesis.
 
+### Current
+
 {{projects}}
+
+### Archived
+
+{{archived-projects}}
 
 ## My Courses
 
