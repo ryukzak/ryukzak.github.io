@@ -68,3 +68,4 @@
 /projects/course-bot/
 /projects/nitta/
 /projects/tailbook/
+/projects/wrench/
