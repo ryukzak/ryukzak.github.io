@@ -54,7 +54,7 @@ category: Research pet projects
 1. [Разработка и исследование архитектурных стилей проектирования уровневой организации Встроенных систем. Пенской А.В. 2016](/assets/pdf/thesises/2016-diss-penskoi-thesis.pdf), [autoref](/assets/pdf/thesises/2016-diss-penskoi-autoref.pdf)
 1. Разработка системы управления аппаратным вычислителем, Оспенников Л.В., бак., 2018, [text](/assets/pdf/thesises/2018-ospennikov-bac-nitta-control.pdf), [slides](/assets/pdf/thesises/2018-ospennikov-bac-nitta-control-slides.pdf)
 1. Механизмы ввода-вывода реконфигурируемой вычислительной платформы реального времени, Емельянов Д.В., маг., 2019, [text](/assets/pdf/thesises/2019-emelianov-master-nitta-spi.pdf)
-1. Автоматизация построения моделей вычислительных блоков для системы проектирования специалиированных вычислителей, Ницер  К.А., бак., 2019, [text](/assets/pdf/thesises/2019-nitcer-bac-auto-pu-model-gen.pdf)
+1. Автоматизация построения моделей вычислительных блоков для системы проектирования специализированных вычислителей, Ницер К.А., бак., 2019, [text](/assets/pdf/thesises/2019-nitcer-bac-auto-pu-model-gen.pdf)
 1. Разработка высокоскоростного интерфейса аппаратного ускорителя для системной динамики, Чижиков И.В., маг., 2020, [text](/assets/pdf/thesises/2020-chizikov-master-nitta-pci-express.pdf)
 1. Оптимизация синтеза в САПР специализированных вычислителей с помощью машинного обучения, Бураков И.А., бак., 2021, [text](/assets/pdf/thesises/2021-burakov-bac-nitta-ml.pdf)
 1. Верификация системы автоматического проектирования специализированных процессоров, Костючик А.Г., маг., 2021, [text](/assets/pdf/thesises/2021-kostychick-mag-nitta-test-dsl.pdf)
