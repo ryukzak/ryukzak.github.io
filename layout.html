@@ -74,12 +74,12 @@
         {{- else if eq .Layout "page"}}
         <h1>{{.Title}}</h1>
         <p class="subtitle">{{.Description}}</p>
-        {{- if not .Updated.IsZero}}
-        <p class="updated"><small>{{if $ru}}Обновлено{{else}}Updated{{end}} {{.UpdatedText}}</small></p>
-        {{- end}}
         {{- end}}
 
 {{.Content}}
+        {{- if and (eq .Layout "page") (not .Updated.IsZero)}}
+        <p class="updated"><small>{{if $ru}}Обновлено{{else}}Updated{{end}} {{.UpdatedText}}</small></p>
+        {{- end}}
       </section>
     </div>
     <script src="/assets/js/scale.fix.js"></script>

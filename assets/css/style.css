@@ -565,14 +565,15 @@ nav.lang {
   margin-bottom: 10px;
 }
 
-/* page header: description and last update under the title */
+/* page header: description under the title, last update at the end */
 p.subtitle {
   color: #494949;
   font-size: 16px;
-  margin: -10px 0 5px;
+  margin: -10px 0 20px;
 }
 p.updated {
   color: #999;
+  margin-top: 40px;
 }
 
 /* a row of links right under the page header */
