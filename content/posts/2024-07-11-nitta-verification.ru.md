@@ -14,4 +14,4 @@ tags:        NITTA
 
 YouTube: [link](https://youtu.be/fkdpawtSE4Q)
 
-Slides: [link]({{ sire.url }}/assets/pdf/2024-NITTA-Verificatoin-IT-Branch-House.pdf)
+Slides: [link](/assets/pdf/2024-NITTA-Verificatoin-IT-Branch-House.pdf)

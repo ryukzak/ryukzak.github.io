@@ -11,6 +11,6 @@ inline: false
 Ссылки:
 
 - [Youtube](https://youtu.be/Lq4iLHoDjiA)
-- [Слайды]({{ site.url }}/assets/pdf/2020-11-11-selection-of-architectural-tool.pdf)
+- [Слайды](/assets/pdf/2020-11-11-selection-of-architectural-tool.pdf)
 - [Статья](https://www.researchgate.net/publication/334487308_The_Selection_Problem_and_Evaluating_Method_for_Architectural_Design_Tools_of_Embedded_Systems)
 - [Научный семинар факультета ПИиКТ](https://ldrbmrtv.github.io/SCS.Workshop/)

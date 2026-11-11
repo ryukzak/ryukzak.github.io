@@ -12,6 +12,6 @@ This report is focusing on verification problems and approaches used in the ongo
 
 Links:
 - [Youtube](https://youtu.be/3uR1gPU2RGQ)
-- [Slides]({{ sire.url }}/assets/pdf/2021-04-29-Software-Verification-on-the-ASIP-CAD-Example.pdf)
+- [Slides](/assets/pdf/2021-04-29-Software-Verification-on-the-ASIP-CAD-Example.pdf)
 - [NITTA Project](http://ryukzak.github.io/projects/nitta/)
 - [Place: Open Dais](http://cosm-lab.science/en/open-dais.html)

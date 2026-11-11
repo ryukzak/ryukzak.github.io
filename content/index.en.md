@@ -1,5 +1,6 @@
 ---
 layout: default
+description: Associate Professor at ITMO University and at HDU-ITMO Joint Institute
 ---
 
 ## Bio
@@ -13,7 +14,7 @@ Most of the time, my work involves a blend of research (finding and verifying hy
 
 <!-- Third Person Bio: Aleksandr Penskoi, Ph.D., is working as Associate Professor at Software Engineering and Computer Systems Faculty at ITMO University with a specialization in computational process modeling and computer system design. The primal research topics are multi-level computer systems, hard real-time reconfigurable application-specific processors (NITTA), and verification. He has experience in real-world development as an architect and software engineer, e.g., electricity measuring system for small towns with certification. -->
 
-## My Topics / Мои темы
+## My Topics
 
 I can serve as your advisor in various theoretical and technical domains:
 
@@ -33,48 +34,21 @@ I can serve as your advisor in various theoretical and technical domains:
 
 Please feel free to explore my projects to get a better idea of my expertise and how I can assist you.
 
-## My Projects / Мои проекты
+## My Projects
 
 These projects can provide topics for your bachelor's or master's thesis.
 
-<ul>
-{% assign sorted = site.projects | sort: 'title'  %}
-{% for post in sorted %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}
-    <br/>
-    <small> {{ post.description }} </small></a>
-  </li>
-{% endfor %}
-</ul>
+{{projects}}
 
-## My Courses / Мои курсы
+## My Courses
 
-<ul>
-{% assign sorted = site.courses | sort: 'title'  %}
-{% for post in sorted %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}
-    <br/>
-    <small>{{post.description}}</small></a>
-  </li>
-{% endfor %}
-</ul>
+{{courses}}
 
-## Blog / Блог
+## Blog
 
-<ul>
-{% assign sorted = site.posts | sort: 'date' | reverse  %}
-{% for post in sorted %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}
-    <br/>
-    <small><tt> // {{ post.date | date_to_long_string }}</tt></small> </a>
-  </li>
-{% endfor %}
-</ul>
+{{posts}}
 
-## Social / Контакты
+## Social
 
 - GitHub: [ryukzak](https://github.com/ryukzak)
 - Twitter: [@ryukzak](https://twitter.com/ryukzak)

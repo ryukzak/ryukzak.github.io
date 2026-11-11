@@ -1,0 +1,85 @@
+{{- $ru := eq .Lang "ru" -}}
+{{- $site := "Aleksandr Penskoi" -}}
+{{- if $ru -}}{{- $site = "Александр Пенской" -}}{{- end -}}
+{{- $base := "https://ryukzak.github.io" -}}
+<!DOCTYPE html>
+<html lang="{{.Lang}}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{if .Title}}{{.Title}} | {{end}}{{$site}}</title>
+    {{- if .Description}}
+    <meta name="description" content="{{.Description}}">
+    <meta property="og:description" content="{{.Description}}">
+    {{- end}}
+    <meta name="author" content="{{$site}}">
+    <meta property="og:title" content="{{if .Title}}{{.Title}}{{else}}{{$site}}{{end}}">
+    <meta property="og:site_name" content="{{$site}}">
+    <meta property="og:locale" content="{{if $ru}}ru_RU{{else}}en_US{{end}}">
+    <meta property="og:type" content="{{if eq .Layout "post"}}article{{else}}website{{end}}">
+    <meta property="og:url" content="{{$base}}{{.URL}}">
+    <link rel="canonical" href="{{$base}}{{.URL}}">
+    {{- if .Alternates}}
+    <link rel="alternate" hreflang="{{.Lang}}" href="{{$base}}{{.URL}}">
+    {{- range .Alternates}}
+    <link rel="alternate" hreflang="{{.Lang}}" href="{{$base}}{{.URL}}">
+    {{- end}}
+    {{- end}}
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{if $ru}}/ru/{{else}}/{{end}}">{{$site}}</a></h1>
+        <img src="/assets/img/prof_pic_small.jpeg" alt="Logo" />
+        {{- if $ru}}
+        <p>
+          Доцент <br/>
+          <a href="https://scs.ifmo.ru/ru/">факультета ПИиКТ</a> <br/>
+          <a href="https://itmo.ru">Университета ИТМО</a> <br/>
+          Россия
+          <hr/>
+          Доцент <br/>
+          <a href="http://joint.hdu.edu.cn/en/">Совместного института HDU-ИТМО</a><br/>
+          Китай
+        </p>
+        <p class="view"><a href="https://github.com/ryukzak">Профиль на GitHub</a></p>
+        {{- else}}
+        <p>
+          Associate Professor <br/>
+          at <a href="https://scs.ifmo.ru/ru/">SE&amp;CS Faculty</a> <br/>
+          at <a href="https://en.itmo.ru">ITMO University</a> <br/>
+          Russia
+          <hr/>
+          Associate Professor <br/>
+          at <a href="http://joint.hdu.edu.cn/en/">HDU-ITMO Joint Institute</a><br/>
+          China
+        </p>
+        <p class="view"><a href="https://github.com/ryukzak">View My GitHub Profile</a></p>
+        {{- end}}
+      </header>
+      <section>
+        <nav class="lang">
+          {{- range $i, $l := .LangLinks}}{{if $i}} · {{end}}
+          {{- if .Current}}<strong>{{.Label}}</strong>
+          {{- else}}<a href="{{.URL}}" hreflang="{{.Lang}}"
+            {{- if .Missing}} title="{{if $ru}}Нет перевода, откроется главная страница{{else}}No translation, opens the home page{{end}}"{{end}}>{{.Label}}</a>
+          {{- end}}
+          {{- end}}
+        </nav>
+        {{- if eq .Layout "post"}}
+        <small>{{.DateText}}</small>
+        <h1>{{.Title}}</h1>
+        <p class="view">{{if $ru}}Автор: {{else}}by {{end}}{{$site}}</p>
+        {{- else if eq .Layout "page"}}
+        <h1>{{.Title}}</h1>
+        <strong class="view">{{.Description}}</strong>
+        <p class="view">{{if $ru}}Автор: {{else}}by {{end}}{{$site}}</p>
+        {{- end}}
+
+{{.Content}}
+      </section>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+  </body>
+</html>

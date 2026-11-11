@@ -5,7 +5,7 @@ date:   2021-10-05 12:00:00 +0300
 description: О чем эта книга и как её читать
 ---
 
-![](/assets/img/Documenting Software Architectures. Views and Beyonds.jpeg)
+![](</assets/img/Documenting Software Architectures. Views and Beyonds.jpeg>)
 
 Это лучшая книга что я видел по вопросам документирования архитектуры программных систем на сегодня. Она касается не только описания ПО, но также вопросов описания аппаратной составляющей и организационных вопросов.
 
