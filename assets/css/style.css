@@ -332,7 +332,7 @@ a {
 a:hover,
 a:focus {
   color: #069;
-  font-weight: bold;
+  text-decoration: underline;
 }
 a small {
   font-size: 11px;
@@ -344,7 +344,7 @@ a:hover small {
   color: #777;
 }
 .wrapper {
-  width: 860px;
+  width: 960px;
   margin: 0 auto;
 }
 blockquote {
@@ -465,7 +465,7 @@ strong {
   color: #222;
 }
 section {
-  width: 500px;
+  width: 600px;
   float: right;
   padding-bottom: 50px;
 }
@@ -485,7 +485,7 @@ footer {
   bottom: 50px;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-@media print, screen and (max-width: 960px) {
+@media print, screen and (max-width: 1060px) {
   div.wrapper {
     width: auto;
     margin: 0;
@@ -508,6 +508,9 @@ footer {
   }
   header a small {
     display: inline;
+  }
+  header img {
+    max-width: 160px;
   }
   header ul {
     position: absolute;
@@ -560,6 +563,21 @@ footer {
 nav.lang {
   text-align: right;
   margin-bottom: 10px;
+}
+
+/* page header: description and last update under the title */
+p.subtitle {
+  color: #494949;
+  font-size: 16px;
+  margin: -10px 0 5px;
+}
+p.updated {
+  color: #999;
+}
+
+/* a row of links right under the page header */
+p.links a {
+  white-space: nowrap;
 }
 
 /* keep the Russian name on one line in the 270px sidebar */

@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"html"
 	"html/template"
+	"io/fs"
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"slices"
@@ -41,10 +43,10 @@ var (
 // document share key, which is also the URL of the original.
 type Page struct {
 	Layout, Title, Description, Lang, URL string
-	Date                                  time.Time
+	Date, Updated                         time.Time
 	Content                               template.HTML
 	Alternates                            []*Page
-	Autotranslated                        bool
+	Autotranslated, LiveReload            bool
 
 	key        string
 	collection string
@@ -52,40 +54,54 @@ type Page struct {
 	source     []byte
 }
 
-// DateText is the publication date in the language of the page.
-func (p *Page) DateText() string {
+func (p *Page) formatDate(t time.Time) string {
 	if p.Lang == "ru" {
-		return fmt.Sprintf("%d %s %d", p.Date.Day(), monthsRu[p.Date.Month()-1], p.Date.Year())
+		return fmt.Sprintf("%d %s %d", t.Day(), monthsRu[t.Month()-1], t.Year())
 	}
-	return p.Date.Format("2 January 2006")
+	return t.Format("2 January 2006")
 }
+
+// DateText is the publication date in the language of the page.
+func (p *Page) DateText() string { return p.formatDate(p.Date) }
+
+// UpdatedText is the date of the last commit to the page source.
+func (p *Page) UpdatedText() string { return p.formatDate(p.Updated) }
 
 type langLink struct {
 	Label, Lang, URL string
-	Current, Missing bool
+	Current          bool
 }
 
-// LangLinks feeds the language toggle. A language without a version of this
-// page links to its home page; a machine translation is labelled "(auto)".
+// LangLinks feeds the language toggle: one link per existing version, a
+// machine translation is labelled "(auto)". Empty without translations.
 func (p *Page) LangLinks() []langLink {
+	if len(p.Alternates) == 0 {
+		return nil
+	}
 	var links []langLink
 	for _, lang := range []string{"en", "ru"} {
-		l := langLink{Label: strings.ToUpper(lang), Lang: lang, URL: "/", Missing: true}
-		if lang == "ru" {
-			l.URL = "/ru/"
-		}
-		for _, alt := range append([]*Page{p}, p.Alternates...) {
-			if alt.Lang == lang {
-				l.URL, l.Missing = alt.URL, false
-				if alt.Autotranslated {
-					l.Label += " (auto)"
-				}
+		for _, v := range append([]*Page{p}, p.Alternates...) {
+			if v.Lang != lang {
+				continue
 			}
+			l := langLink{Label: strings.ToUpper(lang), Lang: lang, URL: v.URL, Current: v == p}
+			if v.Autotranslated {
+				l.Label += " (auto)"
+			}
+			links = append(links, l)
 		}
-		l.Current = lang == p.Lang
-		links = append(links, l)
 	}
 	return links
+}
+
+// gitUpdated is the date of the last commit that touched path, or zero.
+func gitUpdated(path string) time.Time {
+	b, err := exec.Command("git", "log", "-1", "--follow", "--format=%cI", "--", path).Output()
+	if err != nil {
+		return time.Time{}
+	}
+	t, _ := time.Parse(time.RFC3339, strings.TrimSpace(string(b)))
+	return t
 }
 
 func load(path, collection string) (*Page, error) {
@@ -127,8 +143,10 @@ func load(path, collection string) (*Page, error) {
 		p.key = p.Date.Format("/2006/01/02/") + name[11:] + ".html"
 	case "projects":
 		p.key = "/projects/" + name + "/"
+		p.Updated = gitUpdated(path)
 	case "courses":
 		p.key = "/courses/" + name + "/"
+		p.Updated = gitUpdated(path)
 	}
 	p.URL = p.key
 	if p.translated {
@@ -242,7 +260,9 @@ func loadAll() ([]*Page, error) {
 	return pages, nil
 }
 
-func renderPages() error {
+// renderPages writes all pages to out; liveReload adds the script that
+// reloads the browser tab when sources change (used by serve).
+func renderPages(liveReload bool) error {
 	tmpl, err := template.ParseFiles("layout.html")
 	if err != nil {
 		return err
@@ -250,6 +270,9 @@ func renderPages() error {
 	pages, err := loadAll()
 	if err != nil {
 		return err
+	}
+	for _, p := range pages {
+		p.LiveReload = liveReload
 	}
 
 	description := func(p *Page) string { return html.EscapeString(p.Description) }
@@ -312,7 +335,7 @@ func build() error {
 	if err := os.RemoveAll(out); err != nil {
 		return err
 	}
-	if err := renderPages(); err != nil {
+	if err := renderPages(false); err != nil {
 		return err
 	}
 	if err := os.CopyFS(filepath.Join(out, "assets"), os.DirFS("assets")); err != nil {
@@ -321,16 +344,40 @@ func build() error {
 	return checkURLs()
 }
 
-// serve re-renders pages on every request and disables browser caching, so a
-// plain refresh shows edits to content, layout and CSS.
+// sourcesVersion changes whenever a source file is added, removed or edited.
+func sourcesVersion() string {
+	var n int
+	var latest time.Time
+	for _, root := range []string{"content", "assets", "layout.html"} {
+		filepath.WalkDir(root, func(_ string, d fs.DirEntry, err error) error {
+			if err != nil {
+				return nil
+			}
+			if info, err := d.Info(); err == nil {
+				n++
+				if info.ModTime().After(latest) {
+					latest = info.ModTime()
+				}
+			}
+			return nil
+		})
+	}
+	return fmt.Sprintf("%d-%d", n, latest.UnixNano())
+}
+
+// serve re-renders pages on every request and disables browser caching. Open
+// tabs poll /__version and reload when a source file changes.
 func serve(addr string) error {
 	var mu sync.Mutex
 	site := http.FileServer(http.Dir(out))
 	http.Handle("/assets/", http.FileServer(http.Dir(".")))
+	http.HandleFunc("/__version", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, sourcesVersion())
+	})
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		mu.Lock()
 		defer mu.Unlock()
-		if err := renderPages(); err != nil {
+		if err := renderPages(true); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}

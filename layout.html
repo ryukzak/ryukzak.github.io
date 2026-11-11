@@ -59,27 +59,44 @@
         {{- end}}
       </header>
       <section>
+        {{- with .LangLinks}}
         <nav class="lang">
-          {{- range $i, $l := .LangLinks}}{{if $i}} · {{end}}
+          {{- range $i, $l := .}}{{if $i}} · {{end}}
           {{- if .Current}}<strong>{{.Label}}</strong>
-          {{- else}}<a href="{{.URL}}" hreflang="{{.Lang}}"
-            {{- if .Missing}} title="{{if $ru}}Нет перевода, откроется главная страница{{else}}No translation, opens the home page{{end}}"{{end}}>{{.Label}}</a>
+          {{- else}}<a href="{{.URL}}" hreflang="{{.Lang}}">{{.Label}}</a>
           {{- end}}
           {{- end}}
         </nav>
+        {{- end}}
         {{- if eq .Layout "post"}}
         <small>{{.DateText}}</small>
         <h1>{{.Title}}</h1>
-        <p class="view">{{if $ru}}Автор: {{else}}by {{end}}{{$site}}</p>
         {{- else if eq .Layout "page"}}
         <h1>{{.Title}}</h1>
-        <strong class="view">{{.Description}}</strong>
-        <p class="view">{{if $ru}}Автор: {{else}}by {{end}}{{$site}}</p>
+        <p class="subtitle">{{.Description}}</p>
+        {{- if not .Updated.IsZero}}
+        <p class="updated"><small>{{if $ru}}Обновлено{{else}}Updated{{end}} {{.UpdatedText}}</small></p>
+        {{- end}}
         {{- end}}
 
 {{.Content}}
       </section>
     </div>
     <script src="/assets/js/scale.fix.js"></script>
+    {{- if .LiveReload}}
+    <script>
+      (async () => {
+        let version;
+        for (;;) {
+          try {
+            const v = await (await fetch("/__version")).text();
+            if (version && v !== version) location.reload();
+            version = v;
+          } catch (e) {}
+          await new Promise((r) => setTimeout(r, 500));
+        }
+      })();
+    </script>
+    {{- end}}
   </body>
 </html>
