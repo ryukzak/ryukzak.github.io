@@ -12,7 +12,7 @@ Senior software engineer, researcher, and teacher. I research multi-level comput
 - [**Wrench**](/projects/wrench/) -- CPU simulator and auto-grader: 67,000 student programs since April 2025.
 - **Book** -- [Computational Process Organization](https://leanpub.com/computational-process-organization) (Leanpub, in progress).
 - **Leadership** -- founded and lead NITTA; architected and managed a research project on distributed manufacturing planning.
-- **Industry** -- energy metering, manufacturing planning, and [FHIR SDK generation](/projects/fhir-sdk-generator/) at [Health Samurai](https://www.health-samurai.io).
+- **Industry** -- energy metering, manufacturing planning, and [FHIR SDK generation](/projects/atomic-ehr-codegen/) at [Health Samurai](https://www.health-samurai.io).
 
 ## Teaching
 

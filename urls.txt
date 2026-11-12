@@ -65,7 +65,7 @@
 /courses/cpo/
 /courses/csa/
 /courses/fp/
-/projects/fhir-sdk-generator/
+/projects/atomic-ehr-codegen/
 /projects/course-bot/
 /projects/nitta/
 /projects/slap/
