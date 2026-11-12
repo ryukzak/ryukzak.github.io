@@ -37,8 +37,6 @@ Wrench -- рабочая учебная платформа курса [Архи�
 - `wrench-fmt` -- консольный форматировщик ассемблерных файлов.
 - `wrench-serv` -- веб-сервис для загрузки и проверки лабораторных работ.
 
-Написан на Haskell. Доступен в виде бинарных сборок для Linux, macOS и Windows, а также Docker-образа. Чтобы поучаствовать в разработке, посмотрите [issues](https://github.com/ryukzak/wrench/issues) или напишите мне в [Telegram](https://t.me/aleksandr_penskoi).
-
 ## Пример
 
 Факториал на RISC-IV, основной цикл ([полный исходный код](https://github.com/ryukzak/wrench/blob/master/example/risc-iv-32/factorial.s)):
@@ -60,3 +58,11 @@ wrench factorial.s -c factorial-5.yaml
 ```
 
 Больше программ для всех архитектур: [примеры](https://wrench.edu.swampbuds.me/examples).
+
+## Технические детали
+
+Написан на Haskell. Доступен в виде бинарных сборок для Linux, macOS и Windows, а также Docker-образа.
+
+## Участие
+
+Посмотрите [issues](https://github.com/ryukzak/wrench/issues) или напишите мне в [Telegram](https://t.me/aleksandr_penskoi).

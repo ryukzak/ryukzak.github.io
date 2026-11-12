@@ -1,5 +1,6 @@
 ---
 layout: page
+order: 3
 title: Computational Process Organisation
 description: How to describe computational process in a different way?
 ---
@@ -14,4 +15,4 @@ Course prerequisites:
 - a common understanding of data structures and algorithms,
 - and software development tools and workflow.
 
-Based on this course, I am working on the following book: [Other Ways of Programming](http://leanpub.com/other-ways-of-programming).
+Based on this course, I am writing the book [Computational Process Organization](https://leanpub.com/computational-process-organization) (Leanpub, in progress).

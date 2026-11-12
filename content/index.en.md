@@ -1,22 +1,44 @@
 ---
 layout: default
-description: Associate Professor at ITMO University and at HDU-ITMO Joint Institute
+description: Associate Professor at ITMO University
 ---
 
-## Bio
+Senior software engineer, researcher, and teacher. I research multi-level computer systems, from processor microarchitecture to compilers and domain-specific languages. I teach computer architecture and functional programming at ITMO University and build developer tools for FHIR healthcare data at [Health Samurai](https://www.health-samurai.io).
 
-Most of the time, my work involves a blend of research (finding and verifying hypotheses, finding new points of view), development (architecting, implementing, and managing projects), and teaching (delivering lectures, providing consulting services, and mentoring). I specialize in various aspects of software engineering. Here are a few examples of my experiences:
+## Highlights
 
-- Developing the certification-compliant electricity measurement system for small towns.
-- Authoring the Ph.D. thesis on the architecture of multi-level computer systems, exploring how system levels interact across configuration, compilation, interpretation stages, and between software and hardware components.
-- Founding the CAD platform tailored for hard-real-time application-specific processors.
-- Architecting, developing, and managing the research project focused on planning systems for distributed manufacturing with restricted access to production documentation.
+- **Ph.D.** -- architecture of multi-level computer systems ([publications](https://dblp.org/pid/156/6933.html)).
+- [**NITTA**](/projects/nitta/) -- CAD platform for hard real-time CGRA processors ([paper](https://ntv.ifmo.ru/file/article/18618.pdf)).
+- [**Wrench**](/projects/wrench/) -- CPU simulator and auto-grader: 67,000 student programs since April 2025.
+- **Book** -- [Computational Process Organization](https://leanpub.com/computational-process-organization) (Leanpub, in progress).
+- **Leadership** -- founded and lead NITTA; architected and managed a research project on distributed manufacturing planning.
+- **Industry** -- energy metering, manufacturing planning, and [FHIR SDK generation](/projects/fhir-sdk-generator/) at [Health Samurai](https://www.health-samurai.io).
 
-<!-- Third Person Bio: Aleksandr Penskoi, Ph.D., is working as Associate Professor at Software Engineering and Computer Systems Faculty at ITMO University with a specialization in computational process modeling and computer system design. The primary research topics are multi-level computer systems, hard real-time reconfigurable application-specific processors (NITTA), and verification. He has experience in real-world development as an architect and software engineer, e.g., electricity measuring system for small towns with certification. -->
+## Teaching
 
-## My Topics
+- Associate Professor, Software Engineering and Computer Systems Faculty, [ITMO University](https://en.itmo.ru), Russia.
+- Associate Professor, [HDU-ITMO Joint Institute](http://joint.hdu.edu.cn/en/), Hangzhou Dianzi University, China.
+- Visiting faculty, 17th Global Week at [Chitkara University](https://www.chitkara.edu.in/global-week/global-week-faculty-list-2018/), India, October 2018.
 
-I can serve as your advisor in various theoretical and technical domains:
+Courses:
+
+{{courses}}
+
+## Projects
+
+{{projects}}
+
+<!-- ## Research
+
+TODO: thesis title, Google Scholar or ORCID link, key publications. -->
+
+## Blog
+
+{{posts}}
+
+## For Students
+
+I can supervise your bachelor's or master's thesis. My projects above can provide a topic, or we can work on one of these:
 
 ### Theoretical Topics
 
@@ -32,29 +54,7 @@ I can serve as your advisor in various theoretical and technical domains:
 1. Distributed Systems: Learn the best practices for designing and implementing distributed systems, taking into account specific business requirements.
 1. Software Verification: How do you make sure that the system developed meets expectations? How do I formulate these expectations?
 
-Please feel free to explore my projects to get a better idea of my expertise and how I can assist you.
-
-## My Projects
-
-These projects can provide topics for your bachelor's or master's thesis.
-
-### Current
-
-{{projects}}
-
-### Archived
-
-{{archived-projects}}
-
-## My Courses
-
-{{courses}}
-
-## Blog
-
-{{posts}}
-
-## Social
+## Contact
 
 - GitHub: [ryukzak](https://github.com/ryukzak)
 - Twitter: [@ryukzak](https://twitter.com/ryukzak)

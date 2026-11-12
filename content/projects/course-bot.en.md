@@ -1,29 +1,26 @@
 ---
 archived: true
+updated: 2025-06-06
 layout: page
 title: Course Bot
-description: Telegram Bot for Course Automation on Clojure
-category: Research pet projects
+description: Telegram Bot for Course Automation
+category: University teaching tools
 ---
 
-It is a practical project, which aims to automate the educational process of the [Computer System Architecture](https://ryukzak.github.io/courses/csa/) course.
+<p class="links">
+<a href="https://github.com/ryukzak/course-bot">GitHub</a> &middot;
+<a href="/projects/slap/">Successor: SLAP</a>
+</p>
 
-Features:
+Course Bot is a Telegram bot that automated the [Computer Architecture](/courses/csa/) course at ITMO University. It is no longer developed: [SLAP](/projects/slap/) now covers its job.
 
-- Quiz in test form
-- Essay submissions by the students with cross-review
-- Scheduling in-class presentations, including topic reviews by the teacher, agenda generation, and evaluation by the teacher and students.
+## Features
 
-Technical details:
+- **Seminars.** The teacher reviews seminar topics anonymously and gives feedback, students register for a seminar themselves, the bot generates the schedule, and students rate each talk.
+- **Essays.** Collection and double-blind cross-review of student essays, with plagiarism control and reports.
+- **Quizzes.** Short tests for quick checks of students' knowledge.
+- **Reports and languages.** Course reports for the teacher; Russian and English interfaces.
 
-- eDSL for describing bot dialog in FSM form: [talk.clj](https://github.com/ryukzak/course-bot/blob/master/src/course_bot/talk.clj).
-- Implemented in [Clojure](https://en.wikipedia.org/wiki/Clojure)
+## Technical details
 
-Possible topics for bachelor's or master's thesis:
-
-- [Find a better way to write nested tests](https://github.com/ryukzak/course-bot/issues/40)
-- eDSL for dialogue system descriptions, without a lot of boilerplate code and with a nice debugging process.
-- Automated testing for dialogue systems based on a property-based approach
-- Also see the [issues](https://github.com/ryukzak/course-bot/issues).
-
-GitHub: [course-bot](https://github.com/ryukzak/course-bot)
+Written in [Clojure](https://en.wikipedia.org/wiki/Clojure). Bot dialogs are described as finite state machines in a small eDSL: [talk.clj](https://github.com/ryukzak/course-bot/blob/master/src/course_bot/talk.clj).

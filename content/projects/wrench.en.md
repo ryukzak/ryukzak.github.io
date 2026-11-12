@@ -36,8 +36,6 @@ Wrench is a production teaching platform for the [Computer Architecture](/course
 - `wrench-fmt` -- command-line formatter for assembly files.
 - `wrench-serv` -- web service for uploading and checking laboratory work.
 
-Written in Haskell. Available as binaries for Linux, macOS, and Windows, and as a Docker image. To contribute, look at the [issues](https://github.com/ryukzak/wrench/issues) or contact me in [Telegram](https://t.me/aleksandr_penskoi).
-
 ## Example
 
 Factorial on RISC-IV, the main loop ([full source](https://github.com/ryukzak/wrench/blob/master/example/risc-iv-32/factorial.s)):
@@ -59,3 +57,11 @@ wrench factorial.s -c factorial-5.yaml
 ```
 
 More programs for every architecture: [examples](https://wrench.edu.swampbuds.me/examples).
+
+## Technical details
+
+Written in Haskell. Available as binaries for Linux, macOS, and Windows, and as a Docker image.
+
+## Contribute
+
+Look at the [issues](https://github.com/ryukzak/wrench/issues) or contact me in [Telegram](https://t.me/aleksandr_penskoi).

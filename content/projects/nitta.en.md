@@ -5,11 +5,18 @@ description: Tool for Hard Real-Time CGRA Application Specific Processors
 category: Research pet projects
 ---
 
+<p class="links">
+<a href="https://github.com/ryukzak/nitta">GitHub</a> &middot;
+<a href="https://youtu.be/mW4sVWVvX0Q">Overview video (in Russian)</a>
+</p>
+
 We develop the tool for generating and programming specialized non-von Neumann processors for cyclic execution of control and signal/data processing algorithms. These processors are based on the original Not Instruction Transport Triggered Architecture (NITTA). That allows us to:
 
 - Provide high speed and parallel execution of irregular algorithms (where GPU is not applicable) in hard real-time (clock accuracy).
 - Make the processor reconfigurable for different application domains.
 - Provide a high-level language for application developers and fast compilation.
+
+## Applications
 
 Our users can resolve the following tasks:
 
@@ -17,13 +24,13 @@ Our users can resolve the following tasks:
 - Hardware and software testing and rapid prototyping (HIL and PIL).
 - Development of programmable accelerators and coprocessors.
 
-Key technologies: Haskell, Verilog, TypeScript, React, GitHub.
+Today, the project focuses on developing the hardware accelerator for system dynamics and its integration into the cloud platform of our friends: [sdCloud project](https://sdcloud.io).
 
-Today, the project focuses on the following goals:
+## Technical details
 
-- developing the hardware accelerator for system dynamics and its integration into the cloud platform of our friends: [sdCloud project](https://sdcloud.io).
+Haskell, Verilog, TypeScript, React.
 
-You can get to know the project by reading recent publications and viewing presentations:
+## Publications and talks
 
 - [Report 2024, Functional Care for Research Pet Project: NITTA, CGRA, Haskell, Verification and Test](/2024/07/11/nitta-verification.html) in Russian
 - [Report 2024, NITTA Project & CGRA Overview](https://youtu.be/mW4sVWVvX0Q) in Russian
@@ -31,6 +38,8 @@ You can get to know the project by reading recent publications and viewing prese
 - [Report: 2021, Open Dais: Software Verification on the ASIP CAD Example or How to Trust Your Team and Yourself](https://ryukzak.github.io/2021/04/29/software-verification-on-CAD-example.html)
 - [Report: 2021, NITTA: principles of work](https://ryukzak.github.io/2021/02/03/nitta-internals.html) in Russian
 - [Report: 2019, LCPS Workshop: NITTA - Design Application Specific Processors](https://disk.yandex.ru/i/nllkSLEIzmf7GA) in Russian
+
+## Contribute
 
 You can start to contribute with simple tasks, for example:
 
@@ -47,9 +56,9 @@ After diving into the project, you can join in solving more complex problems:
 - Development of visualization tools for a multi-level computing process (Typescript, React).
 - Development of control software for the integration of a specialized processor into other information systems (Rust, Verilog, Haskell).
 
-For details and up-to-date information, look at issues and projects on GitHub: [GitHub](https://github.com/ryukzak/nitta)
+For details and up-to-date information, look at the [issues](https://github.com/ryukzak/nitta/issues). To participate, contact me in [Telegram](https://t.me/aleksandr_penskoi) or by <aleksandr.penskoi@gmail.com>.
 
-To participate in the project, you need to contact me: <https://t.me/aleksandr_penskoi> or <aleksandr.penskoi@gmail.com>.
+## Theses
 
 Theses related to the project (in Russian):
 

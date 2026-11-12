@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"slices"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -52,6 +53,7 @@ type Page struct {
 	collection string
 	translated bool
 	archived   bool
+	order      int
 	source     []byte
 }
 
@@ -150,6 +152,18 @@ func load(path, collection string) (*Page, error) {
 		p.key = "/courses/" + name + "/"
 		p.Updated = gitUpdated(path)
 	}
+	// `order: N` sets the position in a home page listing.
+	if v, ok := meta["order"]; ok {
+		if p.order, err = strconv.Atoi(v); err != nil {
+			return nil, fmt.Errorf("%s: %w", path, err)
+		}
+	}
+	// `updated: YYYY-MM-DD` overrides the git date, e.g. for archived projects.
+	if v, ok := meta["updated"]; ok {
+		if p.Updated, err = time.Parse("2006-01-02", v); err != nil {
+			return nil, fmt.Errorf("%s: %w", path, err)
+		}
+	}
 	p.URL = p.key
 	if p.translated {
 		p.URL = "/" + p.Lang + p.key
@@ -190,34 +204,53 @@ func render(src []byte) (template.HTML, error) {
 }
 
 // listing renders one home page section in the given language, falling back
-// to the original when a page has no translation. archived selects pages by
-// the `archived: true` flag of the original.
-func listing(pages []*Page, collection, lang string, archived bool, small func(*Page) string) string {
+// to the original when a page has no translation. Pages with the
+// `archived: true` flag of the original go last and get a label.
+func listing(pages []*Page, collection, lang string, small func(*Page) string) string {
 	var items []*Page
 	for _, p := range pages {
-		if p.collection != collection || p.translated || p.archived != archived {
+		if p.collection != collection || p.translated {
 			continue
 		}
 		item := p
 		for _, alt := range p.Alternates {
 			if alt.Lang == lang {
 				item = alt
+				item.archived = p.archived
+				item.order = p.order
 			}
 		}
 		items = append(items, item)
 	}
 	slices.SortFunc(items, func(a, b *Page) int {
+		if a.archived != b.archived {
+			if a.archived {
+				return 1
+			}
+			return -1
+		}
 		if collection == "posts" {
 			return b.Date.Compare(a.Date)
+		}
+		if a.order != b.order {
+			return a.order - b.order
 		}
 		return strings.Compare(a.Title, b.Title)
 	})
 
+	label := "archived"
+	if lang == "ru" {
+		label = "архив"
+	}
 	var b strings.Builder
 	b.WriteString("<ul>\n")
 	for _, p := range items {
+		title := html.EscapeString(p.Title)
+		if p.archived {
+			title += ` <span class="label">` + label + `</span>`
+		}
 		fmt.Fprintf(&b, "<li><a href=\"%s\">%s<br/><small>%s</small></a></li>\n",
-			p.URL, html.EscapeString(p.Title), small(p))
+			p.URL, title, small(p))
 	}
 	b.WriteString("</ul>")
 	return b.String()
@@ -284,10 +317,9 @@ func renderPages(liveReload bool) error {
 		src := p.source
 		if p.collection == "home" {
 			src = []byte(strings.NewReplacer(
-				"{{projects}}", listing(pages, "projects", p.Lang, false, description),
-				"{{archived-projects}}", listing(pages, "projects", p.Lang, true, description),
-				"{{courses}}", listing(pages, "courses", p.Lang, false, description),
-				"{{posts}}", listing(pages, "posts", p.Lang, false, date),
+				"{{projects}}", listing(pages, "projects", p.Lang, description),
+				"{{courses}}", listing(pages, "courses", p.Lang, description),
+				"{{posts}}", listing(pages, "posts", p.Lang, date),
 			).Replace(string(src)))
 		}
 		if p.Content, err = render(src); err != nil {

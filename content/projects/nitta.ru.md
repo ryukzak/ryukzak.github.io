@@ -6,11 +6,18 @@ description: Инструмент для проектирования CGRA-пр�
 category: Research pet projects
 ---
 
+<p class="links">
+<a href="https://github.com/ryukzak/nitta">GitHub</a> &middot;
+<a href="https://youtu.be/mW4sVWVvX0Q">Обзор проекта (видео)</a>
+</p>
+
 Мы создаем инструментарий для генерации и программирования специализированных не фон -- Неймановских процессоров, предназначенных для циклического исполнения алгоритмов управления и обработки сигналов/данных. Они строятся на оригинальной архитектуре NITTA (Not Instruction Transport Triggered Architecture). Это позволяет:
 
 - обеспечить высокую скорость и уровень параллелизма для нерегулярных алгоритмов (где не используют GPU) и жесткое реальное время (с точностью до такта);
 - сделать процессор реконфигурируемым под разные прикладные области;
 - предоставить язык высокого уровня для прикладных разработчиков и быструю компиляцию.
+
+## Применение
 
 Построенные при помощи нашего инструмента вычислители могут использоваться для:
 
@@ -18,20 +25,26 @@ category: Research pet projects
 - программно-аппаратного тестирования и быстрого прототипирования (HIL и PIL);
 - разработки программируемых ускорителей и сопроцессоров.
 
-В настоящий момент перед проектом стоят следующие цели:
+Сейчас проект сосредоточен на разработке аппаратного ускорителя для системной динамики и его интеграции в облачную платформу наших друзей из [sdCloud project](https://sdcloud.io).
 
-- разработка аппаратного ускорителя для системной динамики и его интеграция в облачную платформу наших друзей из [sdCloud project](https://sdcloud.io).
+## Технические детали
 
-Знакомство с проектом можно начать с чтения последних публикацией по проекту и просмотра выступлений:
+Haskell, Verilog, TypeScript, React.
+
+## Публикации и выступления
+
+Знакомство с проектом можно начать с чтения последних публикаций по проекту и просмотра выступлений:
 
 - [Функциональный уход за Research Pet Project: NITTA, CGRA, Haskell, верификация и тестирование](/2024/07/11/nitta-verification.html)
 - [Report 2024, Обзор проекта NITTA и CGRA](https://youtu.be/mW4sVWVvX0Q), [slides](http://csa.edu.swampbuds.me/99-cgra-nitta.md)
 - [Paper: 2021, Synthesis Method for CGRA Processors based on Imitation Model](https://www.researchgate.net/publication/350871215_Synthesis_Method_for_CGRA_Processors_based_on_Imitation_Model)
 - [Report: 2021, Open Dais: Software Verification on the ASIP CAD Example or How to Trust Your Team and Yourself](/2021/04/29/software-verification-on-CAD-example.html)
-- [2021, NITTA: принципы работы](https://ryukzak.github.io/2021/02/03/nitta-internals.html);
-- [2019, Семинар ЛКФС: NITTA Система проектирования спец. вычислителей](https://disk.yandex.ru/i/nllkSLEIzmf7GA).
+- [2021, NITTA: принципы работы](/2021/02/03/nitta-internals.html)
+- [2019, Семинар ЛКФС: NITTA Система проектирования спец. вычислителей](https://disk.yandex.ru/i/nllkSLEIzmf7GA)
 
-Участие в проекте можно начать с простых задач, к примеру (после открытия исходного кода здесь будет ссылка на GitHub с реальными тикетами):
+## Участие
+
+Участие в проекте можно начать с простых задач, к примеру:
 
 - Обновление зависимостей пользовательского интерфейса (Yarn, Typescript, React).
 - Добавление ключа TARGET_PATH к интерфейсу командной строки (Haskell).
@@ -47,9 +60,11 @@ category: Research pet projects
 - Разработка системы управления для интеграции процессоров в информационные системы (Rust, Verilog, Haskell).
 - Реализация поддержки арифметики с плавающей точки для специализированных вычислителей (Haskell, Verilog)
 
-Для участия в проекте вам необходимо связаться со мной: <https://t.me/aleksandr_penskoi> или <aleksandr.penskoi@gmail.com>.
+Подробности и актуальные задачи -- в [issues](https://github.com/ryukzak/nitta/issues). Для участия свяжитесь со мной в [Telegram](https://t.me/aleksandr_penskoi) или по <aleksandr.penskoi@gmail.com>.
 
-Дипломы связанные с проектом:
+## Дипломы
+
+Дипломы, связанные с проектом:
 
 1. [Разработка и исследование архитектурных стилей проектирования уровневой организации Встроенных систем. Пенской А.В. 2016](/assets/pdf/thesises/2016-diss-penskoi-thesis.pdf), [autoref](/assets/pdf/thesises/2016-diss-penskoi-autoref.pdf)
 1. Разработка системы управления аппаратным вычислителем, Оспенников Л.В., бак., 2018, [text](/assets/pdf/thesises/2018-ospennikov-bac-nitta-control.pdf), [slides](/assets/pdf/thesises/2018-ospennikov-bac-nitta-control-slides.pdf)

@@ -65,8 +65,10 @@
 /courses/cpo/
 /courses/csa/
 /courses/fp/
+/projects/fhir-sdk-generator/
 /projects/course-bot/
 /projects/nitta/
+/projects/slap/
 /projects/tailbook/
 /projects/wrench/
 /ru/projects/wrench/
