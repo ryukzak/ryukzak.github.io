@@ -9,7 +9,7 @@ Senior software engineer, researcher, and teacher. I research multi-level comput
 
 - **Ph.D.** -- architecture of multi-level computer systems ([publications](https://dblp.org/pid/156/6933.html)).
 - [**NITTA**](/projects/nitta/) -- CAD platform for hard real-time CGRA processors ([paper](https://ntv.ifmo.ru/file/article/18618.pdf)).
-- [**Wrench**](/projects/wrench/) -- CPU simulator and auto-grader: 67,000 student programs since April 2025.
+- [**Wrench**](/projects/wrench/) -- CPU simulator and auto-grader: 67,000 student programs from April 2025 to November 2026.
 - **Book** -- [Computational Process Organization](https://leanpub.com/computational-process-organization) (Leanpub, in progress).
 - **Leadership** -- founded and lead NITTA; architected and managed a research project on distributed manufacturing planning.
 - **Industry** -- energy metering, manufacturing planning, and [FHIR SDK generation](/projects/atomic-ehr-codegen/) at [Health Samurai](https://www.health-samurai.io).
@@ -53,10 +53,3 @@ I can supervise your bachelor's or master's thesis. My projects above can provid
 1. Domain-Specific Languages: Discover how to streamline the programming process and understand why Domain-Specific Languages may not always be the best solution. eDSL integration in the host language.
 1. Distributed Systems: Learn the best practices for designing and implementing distributed systems, taking into account specific business requirements.
 1. Software Verification: How do you make sure that the system developed meets expectations? How do I formulate these expectations?
-
-## Contact
-
-- GitHub: [ryukzak](https://github.com/ryukzak)
-- Twitter: [@ryukzak](https://twitter.com/ryukzak)
-- Telegram: [@aleksandr_penskoi](https://t.me/aleksandr_penskoi)
-- LinkedIn: [Aleksandr Penskoi](https://www.linkedin.com/in/aleksandr-penskoi/)

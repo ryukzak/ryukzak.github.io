@@ -249,6 +249,10 @@ func listing(pages []*Page, collection, lang string, small func(*Page) string) s
 		if p.archived {
 			title += ` <span class="label">` + label + `</span>`
 		}
+		// A course without a version in this language keeps its own title.
+		if collection == "courses" && p.Lang != lang {
+			title += ` <span class="label">` + map[string]string{"en": "in Russian", "ru": "на английском"}[lang] + `</span>`
+		}
 		fmt.Fprintf(&b, "<li><a href=\"%s\">%s<br/><small>%s</small></a></li>\n",
 			p.URL, title, small(p))
 	}

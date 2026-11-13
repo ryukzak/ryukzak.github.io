@@ -1,5 +1,6 @@
 ---
 layout: page
+updated: 2026-05-21
 title: NITTA
 description: Tool for Hard Real-Time CGRA Application Specific Processors
 category: Research pet projects

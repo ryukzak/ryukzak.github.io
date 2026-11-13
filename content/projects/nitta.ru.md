@@ -1,6 +1,7 @@
 ---
 auto_translated: false
 layout: page
+updated: 2026-05-21
 title: NITTA
 description: Инструмент для проектирования CGRA-процессоров жёсткого реального времени
 category: Research pet projects

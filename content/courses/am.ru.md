@@ -19,4 +19,19 @@ description: Архитектурное моделирование компью�
 - дадут шаблоны для документирования архитектурных представлений и решений;
 - вынудят это всё опробовать в рамках курсового проекта.
 
+## uonto
+
+[uonto](https://github.com/ryukzak/uonto) -- наглядная демонстрация метода моделирования предметной области из введения в курс. В модели нет сущностей и атрибутов, только объекты и классы. Подход основан на логической парадигме и 4D-экстенсионализме и вдохновлён BORO (Business Objects Re-Engineering) и ISO 15926.
+
+В репозитории:
+
+- движок онтологии: объекты, классификация, кортежи и логический вывод ([core.clj](https://github.com/ryukzak/uonto/blob/master/src/uonto/core.clj));
+- реляционные таблицы поверх онтологии и объединение трёх таблиц без JOIN ([table.clj](https://github.com/ryukzak/uonto/blob/master/src/uonto/table.clj), [table_test.clj](https://github.com/ryukzak/uonto/blob/master/src/uonto/table_test.clj));
+- пример с медицинскими справочниками кодов на нескольких языках ([code_system_test.clj](https://github.com/ryukzak/uonto/blob/master/src/uonto/code_system_test.clj));
+- слайды с объяснением подхода: от Платона до 4D-экстенсионализма.
+
+Реализовано на Clojure.
+
+## Материалы курса
+
 Подробности (для студентов ИТМО): [Архитектурное моделирование компьютерных систем](https://gitlab.se.ifmo.ru/system-enginering/architectural-modeling)
